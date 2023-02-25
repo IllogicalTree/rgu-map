@@ -23,7 +23,6 @@
           .cls-2 {
             fill: #d5cbe2;
           }
-         
           .cls-4 {
             fill: #b02f7c;
           }
@@ -36,8 +35,9 @@
           .cls-7 {
             fill: #be1622;
           }
-          .cls-2:hover, .cls-3:hover, .cls-4:hover, .cls-5:hover, .cls-6:hover, .cls-7:hover {
+          .cls-2:hover, .cls-3:hover, .cls-3:hover, .cls-4:hover, .cls-5:hover, .cls-6:hover, .cls-7:hover {
             opacity: 0.5;
+          }
           }
         </style>
       </defs>
@@ -367,28 +367,27 @@
         "NS326S"
       ]
       */
+      /*
       roomNums.forEach((roomNum) => {
         console.log(roomNum);
         document
           .getElementById(roomNum)
           .addEventListener("click", () => alert(roomNum));
-
-          
       });
+      */
     </script>
 
-
-    <div class="descriptionbox" onclick="displayDescription()">
-      <span class="description" id="descriptionbox">
-        <h1> room name</h1>
-        <p> description</p>\
-        <p> navigtion stuff</p>
-        
-      </span>
+    <div class="container">
+      <!-- put the clicky thngys here to bring up pop up  onclick="openDescBox()" -->
+      <div class="descriptionBox">
+        <h1 id="roomName">room name</h1>
+        <p id="roomDescription">room description</p>
+        <p id="roomDetails">how to get there</p>
+        <button type="button">close</button>
+      </div>
     </div>
 
-
-    <!-- <script type="module" src="/test.js"></script>-->
-    <!--<script type="module" src="/main.js"></script>-->
+    <script type="module" src="/3d-test.js"></script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>

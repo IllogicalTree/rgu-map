@@ -1,26 +1,75 @@
 import './style.css'
-//import javascriptLogo from './javascript.svg'
-//import { setupCounter } from './counter.js'
+
+const roomNums = [
+  "N309",
+  "N310",
+  "Main_Atrium",
+  "N311",
+  "N318",
+  "N317",
+  "N318a",
+  "N319",
+  "N320",
+  "N325",
+  "N328",
+  "N331",
+  "N334",
+  "N336",
+  "N329",
+  "N332",
+  "N339",
+  "N340",
+  "N341",
+  "N346",
+  "N345",
+  "N344",
+];
 
 /*
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+const roomNums = [
+  //"N303",
+  //"N303a",
+  "Reception",
+  "N309",
+  "N310",
+  "N311",
+  "N317",
+  "N318",
+  "N318a",
+  "N346",
+  "N345",
+  "N344",
+  "N319",
+  "N320",
+  "N325",
+  "N328",
+  "N328a",
+  "N328b",
+  "N327",
+  "N329",
+  "N332",
+  "N331",
+  "N334",
+  "N336",
+  "N340",
+  "N339",
+  "N341",
+  "N342",
+  "NS323",
+  "NS324",
+  "NS325",
+  "NS326S"
+]
 */
 
+roomNums.forEach((roomNum) => {
+  console.log(roomNum);
+  document
+    .getElementById(roomNum)
+    .addEventListener("click", () => showDescription(roomNum));
+});
+
+function showDescription(roomNum) {
+  console.log(roomNum + " clicked");
+  document.getElementById("roomNumber").innerText = roomNum;
+}
