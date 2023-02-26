@@ -31,6 +31,7 @@ main {
   flex-direction: column;
 }
 
+/*
 .container {
   width:100%;
   height: 300px;
@@ -39,16 +40,25 @@ main {
   align-items: center;
   justify-content:center;
 }
+*/
 
 .descriptionBox {
   width: 300px;
   background:  #913a3a;
   border-radius: 10px;
   position: absolute;
-  top: 50%;
+  top: 0%;
   left: 50%;
   transform: translate(-50%,-50%);
   text-align: center;
+  /* visibility: hidden; */
+  z-index: 999;
+  
+}
+
+.open-descbox {
+  visibility: visible;
+  top: 50%
 }
 
 .descriptionBox h1{
@@ -59,9 +69,25 @@ main {
 .descriptionBox button{
   width: 100%;
   margin-top: 40px;
-  background: #712d3a;
+  background: #1bc796;
   color: #fff;
   border: 0;
   font-size: 20px;
   border-radius: 5px;
+}
+
+body {
+  display: flex;
+  width: 40vw;
+  height: 40vh;
+}
+#app {
+  width: 100px;
+  height: 100px;
+}
+
+.search {
+  display: flex;
+  height: 2rem;
+  position: absolute;
 }

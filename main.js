@@ -73,3 +73,6 @@ function showDescription(roomNum) {
   console.log(roomNum + " clicked");
   document.getElementById("roomNumber").innerText = roomNum;
 }
+
+
+

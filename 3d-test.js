@@ -5,7 +5,7 @@ import { SVGLoader } from 'https://cdn.skypack.dev/three@0.130.0/examples/jsm/lo
 var dragObjects = [];
 const fillMaterial = new THREE.MeshBasicMaterial({ color: "#F3FBFB" });
 const stokeMaterial = new THREE.LineBasicMaterial({
-  color: "#00A5E6",
+  color: "#662483",
 });
 const renderSVG = (svg) => {
   const loader = new SVGLoader();
@@ -13,7 +13,6 @@ const renderSVG = (svg) => {
   const svgGroup = new THREE.Group();
   const updateMap = [];
  
-
   svgGroup.scale.y *= -1;
   svgData.paths.forEach((path) => {
     const shapes = SVGLoader.createShapes(path);
@@ -43,8 +42,6 @@ const renderSVG = (svg) => {
     item.position.y = yOffset;
   });
   svgGroup.rotateX(-Math.PI / 2);
-
-
 
   return {
     object: svgGroup,

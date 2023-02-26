@@ -5,11 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Campus Mapple</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <div id="app"></div>
-    <p>Campus Mapple :)</p>
-
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1563.59 604.1">
       <defs>
         <style>
@@ -37,7 +36,6 @@
           }
           .cls-2:hover, .cls-3:hover, .cls-3:hover, .cls-4:hover, .cls-5:hover, .cls-6:hover, .cls-7:hover {
             opacity: 0.5;
-          }
           }
         </style>
       </defs>
@@ -377,17 +375,51 @@
       */
     </script>
 
+
+
+
+
     <div class="container">
+      
       <!-- put the clicky thngys here to bring up pop up  onclick="openDescBox()" -->
-      <div class="descriptionBox">
+      <div class="descriptionBox" id="descriptionBox">
         <h1 id="roomName">room name</h1>
         <p id="roomDescription">room description</p>
         <p id="roomDetails">how to get there</p>
-        <button type="button">close</button>
+        <button type="button" onclick="closeDescBox()">close</button>
       </div>
     </div>
 
+    <div class="search" id="search">
+      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+
+   <script>
+    let descriptionBox = document.getElementById("descriptionBox");
+  
+    function opendDescBox(roomNum) {
+      descriptionBox.style.visibility = "visible"
+      //todo fix this thanks ami
+      //descriptionBox.innerText = descriptionBox.innerText += roomNum;
+    }
+
+    roomNums.forEach((roomNum) => {
+        console.log(roomNum);
+        document
+          .getElementById(roomNum)
+          .addEventListener("click", () => opendDescBox(roomNum));
+      });
+  
+    function closeDescBox() {
+      descriptionBox.style.visibility = "hidden"
+    }
+  </script>
+
     <script type="module" src="/3d-test.js"></script>
     <script type="module" src="/main.js"></script>
+    
   </body>
 </html>
