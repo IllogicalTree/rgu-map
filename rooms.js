@@ -12,13 +12,13 @@ const roomLi = [
   },
   {
     id : "Main_Atrium",
-    description : "idk",
-    navigation : "Idk"
+    description : "Multi-purpose event hall",
+    navigation : "Straight on from the main entrance on the 3rd Floor"
   },
   {
     id : "N311",
-    description : "This room epiccccccc",
-    navigation : "Idk"
+    description : "Lecture room",
+    navigation : "3rd floor, from the entrance walk past the main atrium, take your first left, then take a right"
   },
   {
     id : "N317",
@@ -67,8 +67,8 @@ const roomLi = [
   },
   {
     id : "N336",
-    description : "This room epic",
-    navigation : "Idk"
+    description : "Meeting Room",
+    navigation : "3rd Floor, walk past the main atrium, past the lifts, where the hall opens up bear left and walk past the big steps. At the very end turn left, then right, then walk straight ahead."
   },
   {
     id : "N329",

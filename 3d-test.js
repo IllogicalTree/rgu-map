@@ -22,6 +22,7 @@ const colors = new Map([
 ]);
 
 const roomPositions = new Map();
+const roomMaterials = new Map();
 
 const renderSVG = (svg) => {
   const loader = new SVGLoader();
@@ -88,11 +89,27 @@ const renderSVG = (svg) => {
       let z = updateMap.filter(x => (x.shape.currentPoint.x === pos.x && x.shape.currentPoint.y === pos.y))
       //console.log(z)
       //console.log(updateMap)
+     
       z.forEach((updateDetails) => {
         //console.log(updateDetails.shape.uuid)
-        const meshMaterial = new THREE.MeshBasicMaterial({ color: "green", side: THREE.DoubleSide, depthWrite: false });
-        updateDetails.mesh.material.dispose()
-        updateDetails.mesh.material = meshMaterial;
+        let meshMaterial = new THREE.MeshBasicMaterial({ color: "red", side: THREE.DoubleSide, depthWrite: false });
+        console.log(roomMaterials.get(roomNo))
+        if (!roomMaterials.get(roomNo)) {
+          console.log("hmm")
+          meshMaterial = new THREE.MeshBasicMaterial({ color: "green", side: THREE.DoubleSide, depthWrite: false });
+          roomMaterials.set(roomNo, updateDetails.mesh.material)
+          updateDetails.mesh.material.dispose()
+          updateDetails.mesh.material = meshMaterial;
+        } else {
+          console.log("hmm2")
+          meshMaterial = roomMaterials.get(roomNo)
+          updateDetails.mesh.material.dispose()
+          updateDetails.mesh.material = meshMaterial;
+          meshMaterial = roomMaterials.set(roomNo, null)
+        }
+      
+        
+        //setTimeout(() => updateDetails.mesh.material , delay)
       })
     },
     update(extrusion) {
@@ -454,7 +471,7 @@ const app = document.querySelector("#app");
 const scene = setupScene(app);
 const { object, highlight } = renderSVG(svg);
 
-highlight("N309");
+highlight("N309", true);
 
 scene.add(object);
 

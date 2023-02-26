@@ -1,4 +1,7 @@
 import './style.css'
+//console.log("Connected");
+console.log(document.getElementById("descriptionBox"));
+document.getElementById("descriptionBox").style.visibility = "hidden"; // why this no work :( 
 
 const roomNums = [
   "N309",
@@ -70,15 +73,5 @@ roomNums.forEach((roomNum) => {
     .addEventListener("click", () => showDescription(roomNum));
 });
 */
-
-document.getElementById("up").addEventListener("click", () => {
-  console.log("up")
-})
-
-document.getElementById("up").addEventListener("click", () => {
-  console.log("down")
-})
-
-
 
 
