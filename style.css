@@ -2,7 +2,7 @@ g:hover {
   fill: red;
 }
 
-.searchybar input[type=text] {
+.searchybar input[type=text] { /* Lol the name */
   float: right;
   padding: 6px;
   border: none;
@@ -47,19 +47,18 @@ main {
   background:  rgb(163, 120, 174);
   border-radius: 10px;
   position: absolute;
-  padding-top:600px;
-  top: 0%;
+  padding-top:10%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   text-align: center;
   /* visibility: hidden; */
   z-index: 999;
-  height: 50%;
   
 }
 
 .descriptionBox p{
-  color:purple;
+  color:rgb(42, 41, 42);
   font-family:arial;
   
 }
@@ -85,15 +84,24 @@ main {
 }
 
 body {
-  display: flex;
+  /*display: flex;
+  flex-direction: row;
   width: 40vw;
   height: 40vh;
+  */
   margin: 0;
   padding: 0;
 }
+
+main {
+  display:flex;
+  flex-direction:row;
+}
+
 #app {
-  width: 100px;
+  width: 75%S;
   height: 100px;
+  flex:200%;
 }
 
 .search {
@@ -132,8 +140,9 @@ nav {
 
 .nav {
   background: rgba(167, 163, 168, 0.336);
-  height: 100vh;;
+  height: 100vh;
   padding:4%;
+  flex: 25%;
 }
 
 .nav .search-container {
@@ -143,7 +152,6 @@ nav {
   outline: none;
   padding: 24px 20px;
   font-size: 20px;
-
 }
 
 .nav .search-container button {
@@ -155,6 +163,7 @@ nav {
   font-size: 17px;
   border: none;
   cursor: pointer;
+
 }
 
 .nav .search-container button:hover {

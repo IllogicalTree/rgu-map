@@ -9,17 +9,39 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 </head>
 
 <body>
 
+  <header id = "pageHeader"> <!-- Header nonsense -->
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <h1>RGU CampusMapple </h1>
+
+          <h2>Floor 3</h2>
+      </div>
+    </div>
+  </header>
+
+  <main>
   
   <div class="nav">
     <div class="search-container">
-      <form>
+      <form onsubmit="return false" >
         <input id="search" type="text" placeholder="What are you looking for?" name="search">
-        <button id="searchBtn" type="button"><i class="fa fa-search"></i></button>
+        <script>
+          function search(){
+              // Selecting the input element and get its value 
+              var inputVal = document.getElementById("search").val;
+              
+              // Displaying the value
+              alert(inputVal);
+          }
+        </script>
+        <button id="searchBtn" type="button" onclick="search()"><i class="fa fa-search"></i></button>
       </form>
+     
     </div>
     <a href="Floorfour.html" class="updownArrow"><i class="fa fa-arrow-up-9-1"> Up</i></a>
     <a href="Floortwo.html" class="updownArrow"><i class="fa fa-arrow-down-1-9"> Down</i></a>
@@ -473,12 +495,39 @@
     */
   </script>
 
+
   <div class="container">
     <div class="descriptionBox" id="descriptionBox">
       <p id="info"></p>
       <button type="button" onclick="closeDescBox()">close</button>
     </div>
   </div>
+
+  <!--
+  <div class="modal micromodal-slide" id="descriptionBox" class = "descriptionBox" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title">Save Team</h2>
+        </header>
+        <main class="modal__content">
+          <p>
+            When your team is saved, it can be viewed in the 'My Teams'
+            page.
+          </p>
+          <input type="text" id="CustomTeamName" name="CustomTeamName" placeholder="Name your team!" />
+        </main>
+        <footer class="modal__footer">
+          <button id="SaveTeamButton" class="modal__btn" data-micromodal-close
+            aria-label="Close this dialog window">
+            Save
+          </button>
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">
+            Close
+          </button>
+        </footer>
+      </div>
+    </div> -->
 
   <script type="module">
     import roomLi from "./rooms.js"
@@ -521,7 +570,7 @@
 
   <script type="module" src="/3d-test.js"></script>
   <script type="module" src="/main.js"></script>
-
+ </main>
 </body>
 
 </html>

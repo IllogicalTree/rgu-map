@@ -114,4 +114,4 @@ const roomLi = [
 
 export default roomLi;
     
-document.getElementById("info").innerHTML = roomLi.id + "<br>" + roomLi.description + "<br>" + roomLi.navigation;
+//document.getElementById("info").innerHTML = roomLi.id + "<br>" + roomLi.description + "<br>" + roomLi.navigation;
