@@ -1,7 +1,7 @@
 import './style.css'
 //console.log("Connected");
 console.log(document.getElementById("descriptionBox"));
-document.getElementById("descriptionBox").style.visibility = "hidden"; // why this no work :( 
+document.getElementById("descriptionBox").style.visibility = "hidden";
 
 const roomNums = [
   "N309",

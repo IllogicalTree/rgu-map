@@ -13,13 +13,13 @@ g:hover {
 
 #pageHeader{
 
-    background-color: rgb(126, 21, 114);
-    border-bottom: 20px solid rgb(186, 95, 159);
+    background-color: rgb(100, 21, 126);
+    border-bottom: 20px solid rgb(178, 95, 186);
     padding:0px; 
     z-index: 1;
     position: relative;
     color:white;
-    padding: 2%;
+    padding: 4%;
     font-family: arial;
 
 
@@ -197,5 +197,7 @@ nav {
 
 .updownArrow {
   border-style: solid;
-  border-radius: 10%;
+  border-radius: 20%;
+  margin:1%
 }
+

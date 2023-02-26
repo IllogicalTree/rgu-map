@@ -750,4 +750,5 @@ const { object, highlight } = renderSVG(svg);
 scene.add(object);
 
 export default highlight;
+window.highlight = highlight;
 

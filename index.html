@@ -28,24 +28,37 @@
     <div class="search-container">
       <form onsubmit="return false" >
         <input id="search" type="text" placeholder="What are you looking for?" name="search">
-        <script>
-          function search(){
+        
+        
+       <!--
+        <script type="module">
+          import highlight from "./3d-test.js"
+          function roomSearch(){
               // Selecting the input element and get its value 
-              var inputVal = document.getElementById("search").val;
+              console.log("button clicked");
+              var inputVal = document.getElementById("search").value;
               
               // Displaying the value
-              alert(inputVal);
+              //(inputVal);
+              highlight(inputVal, true);
           }
         </script>
-        <button id="searchBtn" type="button" onclick="search()"><i class="fa fa-search"></i></button>
+      -->
+      <!--
+      <script type="module">
+         import highlight from "./3d-test.js"
+      </script>
+    -->
+
+      <button id="searchBtn" type="button" onclick="window.highlight(document.getElementById('search').value, true);"><i class="fa fa-search"></i></button>
+        
       </form>
      
     </div>
     <a href="Floorfour.html" class="updownArrow"><i class="fa fa-arrow-up-9-1"> Up</i></a>
     <a href="Floortwo.html" class="updownArrow"><i class="fa fa-arrow-down-1-9"> Down</i></a>
-  
+    <br>
 
-  <h2>Floor 3</h2>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1563.59 604.1">
       <defs>
         <style>
@@ -529,7 +542,6 @@
 
   <script type="module">
     import roomLi from "./rooms.js"
-    import highlight from "./3d-test.js"
     let descriptionBox = document.getElementById("descriptionBox");
 
     function opendDescBox(roomNum) {
@@ -558,6 +570,19 @@
       })
       */
     });
+
+    function roomSearch(){
+              // Selecting the input element and get its value 
+              console.log("button clicked");
+              var inputVal = document.getElementById("search").value;
+              
+              // Displaying the value
+              alert(inputVal);
+              room.addEventListener("click", () => {
+                opendDescBox(roomNum)
+                highlight(roomNum, true)
+              });
+          };
     </script>
     <script>
 
