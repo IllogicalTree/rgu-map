@@ -745,7 +745,7 @@ if (window.location.href.includes("two")) {
 }
 const { object, highlight } = renderSVG(svg);
 
-highlight("N309", true);
+//highlight("N309", true);
 
 scene.add(object);
 

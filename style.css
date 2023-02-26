@@ -11,12 +11,25 @@ g:hover {
   font-size: 17px;
 }
 
+#pageHeader{
 
+    background-color: rgb(126, 21, 114);
+    border-bottom: 20px solid rgb(186, 95, 159);
+    padding:0px; 
+    z-index: 1;
+    position: relative;
+    color:white;
+    padding: 2%;
+    font-family: arial;
+
+
+}
 
 main {
   display: flex;
   height: 80vh;
   padding: 0;
+  margin: 0;
 }
 
 .map {
@@ -141,8 +154,8 @@ nav {
 .nav {
   background: rgba(167, 163, 168, 0.336);
   height: 100vh;
-  padding:4%;
-  flex: 25%;
+  padding:2%;
+  flex: 40%;
 }
 
 .nav .search-container {
