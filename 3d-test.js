@@ -20,6 +20,7 @@ const renderSVG = (svg) => {
  
   svgGroup.scale.y *= -1;
   svgData.paths.forEach((path) => {
+    const shapeColorCode = path.userData.node.classList[0];
     const shapes = SVGLoader.createShapes(path);
 
     shapes.forEach((shape) => {
@@ -28,17 +29,20 @@ const renderSVG = (svg) => {
         bevelEnabled: false,
       });
       const linesGeometry = new THREE.EdgesGeometry(meshGeometry);
-      //const mesh = new THREE.Mesh(meshGeometry, fillMaterial);
-      let mesh = new THREE.Mesh(meshGeometry, fillMaterial);
+      let mesh = new THREE.Mesh(meshGeometry, new THREE.MeshBasicMaterial({ color: colors.get(shapeColorCode), side: THREE.DoubleSide, depthWrite: false }));
       let rand = Math.random(0,1)
       console.log(rand)
       
       let lines = new THREE.LineSegments(linesGeometry, stokeMaterial);
 
+      
+
+      /*
       if (rand >= 0.5) {
         mesh = new THREE.Mesh(meshGeometry, fillMaterial2);
         lines = new THREE.LineSegments(linesGeometry, stokeMaterial2);
        }
+       */
 
       updateMap.push({ shape, mesh, lines });
       dragObjects.push( mesh );
