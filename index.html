@@ -6,14 +6,24 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Campus Mapple</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-  
+
+  <div class="nav">
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="What are you looking for?" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <a>up</a>
+    <a>down</a>
+  </div>
+  <!-- 
   <header class="toolbar">
     <div class="search" id="search">
       <input type="text" class="searchTerm" placeholder="What are you looking for?">
@@ -30,6 +40,7 @@
       </button>
     </div>
   </header>
+-->
   <div id="app"></div>
 
   <script type="module">
@@ -96,15 +107,15 @@
         transform="translate(-192 -147.9)" />
     </g>
     <g id="N309">
-      <path class="cls-3"
+      <path class="cls-3 N309"
         d="M503.31,274.47c29.05,40.36,63.14,80.71,92.18,121.07,22-15.59,39-31.18,61-46.78L544.59,212.1Z"
         transform="translate(-192 -147.9)" />
     </g>
     <g id="N310">
-      <path class="cls-3" d="M609.48,391.34l62.67,76.43,47.09-37L656,355.26Z" transform="translate(-192 -147.9)" />
+      <path class="cls-3 N310" d="M609.48,391.34l62.67,76.43,47.09-37L656,355.26Z" transform="translate(-192 -147.9)" />
     </g>
     <g id="Main_Atrium" data-name="Main Atrium">
-      <circle class="cls-3" cx="177.69" cy="329.67" r="107.94" />
+      <circle class="cls-3 Main_Atrium" cx="177.69" cy="329.67" r="107.94" />
     </g>
     <g id="N311">
       <path class="cls-3"
@@ -463,6 +474,7 @@
 
   <script type="module">
     import roomLi from "./rooms.js"
+    import highlight from "./3d-test.js"
     let descriptionBox = document.getElementById("descriptionBox");
 
     function opendDescBox(roomNum) {
@@ -477,7 +489,10 @@
      // console.log(roomNum);
       document
         .getElementById(roomNum)
-        .addEventListener("click", () => opendDescBox(roomNum));
+        .addEventListener("click", () => {
+          opendDescBox(roomNum)
+          highlight(roomNum)
+        });
     });
     </script>
     <script>
