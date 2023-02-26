@@ -62,17 +62,23 @@ const roomNums = [
 ]
 */
 
+/*
 roomNums.forEach((roomNum) => {
-  console.log(roomNum);
+  //console.log(roomNum);
   document
     .getElementById(roomNum)
     .addEventListener("click", () => showDescription(roomNum));
 });
+*/
 
-function showDescription(roomNum) {
-  console.log(roomNum + " clicked");
-  document.getElementById("roomNumber").innerText = roomNum;
-}
+document.getElementById("up").addEventListener("click", () => {
+  console.log("up")
+})
+
+document.getElementById("up").addEventListener("click", () => {
+  console.log("down")
+})
+
 
 
 
