@@ -91,14 +91,23 @@ body {
 
 .search {
   display: flex;
+  float: center;
 }
+
+.search input[type=text]{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
 .toolbar {
   display: flex;
   height: 5rem;
   background: rgba(115, 31, 136, 0.5);
   width: 100vw;
   position: absolute;
-  bottom: 0;
+  top: 0;
   justify-content: center;
   align-items: center;
 }

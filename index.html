@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  
   <header class="toolbar">
     <div class="search" id="search">
       <input type="text" class="searchTerm" placeholder="What are you looking for?">
@@ -455,7 +456,7 @@
 
   <div class="container">
     <div class="descriptionBox" id="descriptionBox">
-      <h1 id="roomName">rooms</h1>
+      <p id="info"></p>
       <button type="button" onclick="closeDescBox()">close</button>
     </div>
   </div>
@@ -470,8 +471,6 @@
       let roomObj = filteredRooms[0]
       console.log(roomObj.id, roomObj.category, roomObj.description)
       descriptionBox.style.visibility = "visible"
-      //todo fix this thanks ami
-      //descriptionBox.innerText = descriptionBox.innerText += roomNum;
     }
 
     roomNums.forEach((roomNum) => {

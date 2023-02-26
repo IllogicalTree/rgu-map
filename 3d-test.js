@@ -3,8 +3,8 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.130.0/examples/js
 import { EventControls } from './event-controls.js';
 import { SVGLoader } from 'https://cdn.skypack.dev/three@0.130.0/examples/jsm/loaders/SVGLoader.js';
 var dragObjects = [];
-const fillMaterial = new THREE.MeshBasicMaterial({ color: "blue", side: THREE.DoubleSide, depthWrite: false });
-const fillMaterial2 = new THREE.MeshBasicMaterial({ color: "purple", side: THREE.DoubleSide, depthWrite: false });
+const fillMaterial = new THREE.MeshBasicMaterial({ color: "blue", side: THREE.DoubleSide, depthWrite: false, opacity: 0 });
+const fillMaterial2 = new THREE.MeshBasicMaterial({ color: "purple", side: THREE.DoubleSide, depthWrite: false, opacity: 1 });
 const stokeMaterial = new THREE.LineBasicMaterial({
   //color: "#662483",
   color: "black",
@@ -12,6 +12,47 @@ const stokeMaterial = new THREE.LineBasicMaterial({
 const stokeMaterial2 = new THREE.LineBasicMaterial({
   color: "black",
 });
+
+const colors = new Map([
+  ["cls-2", "#d5cbe2"],
+  ["cls-3", "#662483"],
+  ["cls-4", "#b02f7c"],
+  ["cls-5", "#3a53a0"],
+  ["cls-6", "#f9b233"],
+  ["cls-7", "#be1622"]
+]);
+/*
+
+
+.cls-1,
+        .cls-3 {
+          fill: #662483;
+        }
+
+        .cls-1 {
+          opacity: 0.55;
+        }
+
+        .cls-2 {
+          fill: #d5cbe2;
+        }
+
+        .cls-4 {
+          fill: #b02f7c;
+        }
+
+        .cls-5 {
+          fill: #3a53a0;
+        }
+
+        .cls-6 {
+          fill: #f9b233;
+        }
+
+        .cls-7 {
+          fill: #be1622;
+        }
+*/
 const renderSVG = (svg) => {
   const loader = new SVGLoader();
   const svgData = loader.parse(svg);
@@ -24,6 +65,7 @@ const renderSVG = (svg) => {
     const shapes = SVGLoader.createShapes(path);
 
     shapes.forEach((shape) => {
+      //console.log(shape.uuid)
       const meshGeometry = new THREE.ExtrudeBufferGeometry(shape, {
         depth: 20,
         bevelEnabled: false,
@@ -31,7 +73,7 @@ const renderSVG = (svg) => {
       const linesGeometry = new THREE.EdgesGeometry(meshGeometry);
       let mesh = new THREE.Mesh(meshGeometry, new THREE.MeshBasicMaterial({ color: colors.get(shapeColorCode), side: THREE.DoubleSide, depthWrite: false }));
       let rand = Math.random(0,1)
-      console.log(rand)
+      //console.log(rand)
       
       let lines = new THREE.LineSegments(linesGeometry, stokeMaterial);
 
@@ -44,8 +86,8 @@ const renderSVG = (svg) => {
        }
        */
 
-      updateMap.push({ shape, mesh, lines });
-      dragObjects.push( mesh );
+      updateMap.push({ shape, mesh, lines});
+     // dragObjects.push( mesh );
       svgGroup.add(mesh, lines);
     });
   });
@@ -63,6 +105,37 @@ const renderSVG = (svg) => {
 
   return {
     object: svgGroup,
+    highlight(pos) {
+      //console.log(updateMap)
+      console.log(updateMap)
+      let z = updateMap.filter(x => (x.shape.currentPoint.x === pos.x && x.shape.currentPoint.y === pos.y))
+      console.log(z)
+      //console.log(updateMap)
+      z.forEach((updateDetails) => {
+        //console.log(updateDetails.shape.uuid)
+        const meshMaterial = new THREE.MeshBasicMaterial({ color: "green", side: THREE.DoubleSide, depthWrite: false });
+        updateDetails.mesh.material.dispose()
+        updateDetails.mesh.material = meshMaterial;
+      })
+    },
+    update(extrusion) {
+      updateMap.forEach((updateDetails) => {
+        
+        const meshGeometry = new THREE.ExtrudeBufferGeometry(
+          updateDetails.shape,
+          {
+            depth: extrusion,
+            bevelEnabled: false
+          }
+        );
+        const linesGeometry = new THREE.EdgesGeometry(meshGeometry);
+
+        updateDetails.mesh.geometry.dispose();
+        updateDetails.lines.geometry.dispose();
+        updateDetails.mesh.geometry = meshGeometry;
+        updateDetails.lines.geometry = linesGeometry;
+      });
+    }
   };
 };
 
@@ -419,7 +492,9 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1563.59 604.1"
 // main.js
 const app = document.querySelector("#app");
 const scene = setupScene(app);
-const { object, update } = renderSVG(svg);
+const { object, highlight } = renderSVG(svg);
+
+highlight({x: 777.86, y: 462.34000000000003});
 
 scene.add(object);
 
