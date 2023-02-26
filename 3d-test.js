@@ -3,9 +3,14 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.130.0/examples/js
 import { EventControls } from './event-controls.js';
 import { SVGLoader } from 'https://cdn.skypack.dev/three@0.130.0/examples/jsm/loaders/SVGLoader.js';
 var dragObjects = [];
-const fillMaterial = new THREE.MeshBasicMaterial({ color: "#F3FBFB" });
+const fillMaterial = new THREE.MeshBasicMaterial({ color: "blue", side: THREE.DoubleSide, depthWrite: false });
+const fillMaterial2 = new THREE.MeshBasicMaterial({ color: "purple", side: THREE.DoubleSide, depthWrite: false });
 const stokeMaterial = new THREE.LineBasicMaterial({
-  color: "#662483",
+  //color: "#662483",
+  color: "black",
+});
+const stokeMaterial2 = new THREE.LineBasicMaterial({
+  color: "black",
 });
 const renderSVG = (svg) => {
   const loader = new SVGLoader();
@@ -23,8 +28,17 @@ const renderSVG = (svg) => {
         bevelEnabled: false,
       });
       const linesGeometry = new THREE.EdgesGeometry(meshGeometry);
-      const mesh = new THREE.Mesh(meshGeometry, fillMaterial);
-      const lines = new THREE.LineSegments(linesGeometry, stokeMaterial);
+      //const mesh = new THREE.Mesh(meshGeometry, fillMaterial);
+      let mesh = new THREE.Mesh(meshGeometry, fillMaterial);
+      let rand = Math.random(0,1)
+      console.log(rand)
+      
+      let lines = new THREE.LineSegments(linesGeometry, stokeMaterial);
+
+      if (rand >= 0.5) {
+        mesh = new THREE.Mesh(meshGeometry, fillMaterial2);
+        lines = new THREE.LineSegments(linesGeometry, stokeMaterial2);
+       }
 
       updateMap.push({ shape, mesh, lines });
       dragObjects.push( mesh );
