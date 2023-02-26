@@ -5,7 +5,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1e95f36-87a6-43a0-9028-f33db17a06bf/deploy-status)](https://app.netlify.com/sites/campus-mapple/deploys)
 
 
 <!-- PROJECT LOGO -->
@@ -192,4 +192,3 @@ Project Link: [https://github.com/IllogicalTree/rgu-map](https://github.com/Illo
 [license-url]: https://github.com/IllogicalTree/rgu-map/blob/master/LICENSE.txt
 [Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
 [Svelte-url]: https://svelte.dev/
-[
