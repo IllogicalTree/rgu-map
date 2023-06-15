@@ -1,6 +1,8 @@
+/*
 g:hover {
   fill: red;
 }
+*/
 
 .searchybar input[type=text] { /* Lol the name */
   float: right;
@@ -11,6 +13,7 @@ g:hover {
   font-size: 17px;
 }
 
+/*
 #pageHeader{
 
     background-color: rgb(100, 21, 126);
@@ -43,6 +46,7 @@ main {
   background: lightgray;
   flex-direction: column;
 }
+*/
 
 /*
 .container {
@@ -55,6 +59,7 @@ main {
 }
 */
 
+/*
 .descriptionBox {
   width: 300px;
   background:  rgb(163, 120, 174);
@@ -65,11 +70,14 @@ main {
   left: 50%;
   transform: translate(-50%,-50%);
   text-align: center;
+  */
   /* visibility: hidden; */
-  z-index: 999;
+ /* z-index: 999;
   
 }
+*/
 
+/*
 .descriptionBox p{
   color:rgb(42, 41, 42);
   font-family:arial;
@@ -95,6 +103,7 @@ main {
   font-size: 20px;
   border-radius: 5px;
 }
+*/
 
 body {
   /*display: flex;
@@ -102,17 +111,20 @@ body {
   width: 40vw;
   height: 40vh;
   */
+  /*
   margin: 0;
   padding: 0;
+  */
 }
 
+/*
 main {
   display:flex;
   flex-direction:row;
 }
 
 #app {
-  width: 75%S;
+  width: 75%;
   height: 100px;
   flex:200%;
 }
@@ -129,6 +141,7 @@ main {
   font-size: 17px;
   border: none;
 }
+*/
 
 nav {
   /*overflow: hidden;*/

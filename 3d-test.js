@@ -26,118 +26,6 @@ const colors = new Map([
 const roomPositions = new Map();
 const roomMaterials = new Map();
 
-const renderSVG = (svg) => {
-  const loader = new SVGLoader();
-  const svgData = loader.parse(svg);
-  const svgGroup = new THREE.Group();
-  const updateMap = [];
-  //console.log(svgData)
- 
-  svgGroup.scale.y *= -1;
-  svgData.paths.forEach((path) => {
-    const shapeColorCode = path.userData.node.classList[0];
-    const shapeRoomCode = path.userData.node.classList[1] ?? "0";
-    const shapes = SVGLoader.createShapes(path);
-
-    shapes.forEach((shape) => {
-      const meshGeometry = new THREE.ExtrudeBufferGeometry(shape, {
-        depth: 20,
-        bevelEnabled: false,
-      });
-      const linesGeometry = new THREE.EdgesGeometry(meshGeometry);
-      let mesh = new THREE.Mesh(meshGeometry, new THREE.MeshBasicMaterial({ color: colors.get(shapeColorCode), side: THREE.DoubleSide, depthWrite: false }));
-      let rand = Math.random(0,1)
-      if (shapeRoomCode != 0) {
-      roomPositions.set(shapeRoomCode, shape.currentPoint)
-      }
-      
-      let lines = new THREE.LineSegments(linesGeometry, stokeMaterial);
-
-      
-
-      /*
-      if (rand >= 0.5) {
-        mesh = new THREE.Mesh(meshGeometry, fillMaterial2);
-        lines = new THREE.LineSegments(linesGeometry, stokeMaterial2);
-       }
-       */
-
-      updateMap.push({ shape, mesh, lines});
-     // dragObjects.push( mesh );
-      svgGroup.add(mesh, lines);
-    });
-  });
-
-  const box = new THREE.Box3().setFromObject(svgGroup);
-  const size = box.getSize(new THREE.Vector3());
-  const yOffset = size.y / -2;
-  const xOffset = size.x / -2;
-
-  svgGroup.children.forEach((item) => {
-    item.position.x = xOffset;
-    item.position.y = yOffset;
-  });
-  svgGroup.rotateX(-Math.PI / 2);
-
-  return {
-    object: svgGroup,
-    highlight(roomNo) {
-      let pos = roomPositions.get(roomNo)
-      if (!pos) {
-        console.log("no position for roomno")
-      }
-      if (floor != 3) {
-        return
-      }
-      //console.log(updateMap)
-      //console.log(updateMap)
-      let z = updateMap.filter(x => (x.shape.currentPoint.x === pos.x && x.shape.currentPoint.y === pos.y))
-      //console.log(z)
-      //console.log(updateMap)
-     
-      z.forEach((updateDetails) => {
-        //console.log(updateDetails.shape.uuid)
-        let meshMaterial = new THREE.MeshBasicMaterial({ color: "red", side: THREE.DoubleSide, depthWrite: false });
-        //console.log(roomMaterials.get(roomNo))
-        if (!roomMaterials.get(roomNo)) {
-          //console.log("hmm")
-          meshMaterial = new THREE.MeshBasicMaterial({ color: "green", side: THREE.DoubleSide, depthWrite: false });
-          roomMaterials.set(roomNo, updateDetails.mesh.material)
-          updateDetails.mesh.material.dispose()
-          updateDetails.mesh.material = meshMaterial;
-        } else {
-         // console.log("hmm2")
-          meshMaterial = roomMaterials.get(roomNo)
-          updateDetails.mesh.material.dispose()
-          updateDetails.mesh.material = meshMaterial;
-          meshMaterial = roomMaterials.set(roomNo, null)
-        }
-      
-        
-        //setTimeout(() => updateDetails.mesh.material , delay)
-      })
-    },
-    update(extrusion) {
-      updateMap.forEach((updateDetails) => {
-        
-        const meshGeometry = new THREE.ExtrudeBufferGeometry(
-          updateDetails.shape,
-          {
-            depth: extrusion,
-            bevelEnabled: false
-          }
-        );
-        const linesGeometry = new THREE.EdgesGeometry(meshGeometry);
-
-        updateDetails.mesh.geometry.dispose();
-        updateDetails.lines.geometry.dispose();
-        updateDetails.mesh.geometry = meshGeometry;
-        updateDetails.lines.geometry = linesGeometry;
-      });
-    }
-  };
-};
-
 const setupScene = (container) => {
   const scene = new THREE.Scene();
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -743,12 +631,11 @@ if (window.location.href.includes("two")) {
   svg = svg2
   floor = 2
 }
-const { object, highlight } = renderSVG(svg);
+//const { object, highlight } = renderSVG(svg);
 
 //highlight("N309", true);
 
 scene.add(object);
 
-export default highlight;
 window.highlight = highlight;
 
