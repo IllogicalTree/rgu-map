@@ -15,6 +15,8 @@
 <body>
   <div id="container">
   </div>
+  <button id="floor3">Floor 3</button>
+  <button id="floor4">Floor 4</button> 
 </body>
 
 
@@ -43,14 +45,16 @@
   floors[4] = 'siwb4.svg'
 
   let urls = []
-  urls[3] = '';
-  urls[4] = '';
+  urls[3] = 'https://firebasestorage.googleapis.com/v0/b/webtest-cffc9.appspot.com/o/siwb3.svg?alt=media&token=27f5fe28-7934-441b-9463-4b2c498eaa93';
+  urls[4] = 'https://firebasestorage.googleapis.com/v0/b/webtest-cffc9.appspot.com/o/siwb4.svg?alt=media&token=b77c09e7-0187-41b7-b3bd-b81a1aed1653';
+
+  document.getElementById("floor3").onclick = () => viewFloor(3);
+  document.getElementById("floor4").onclick = () => viewFloor(4);
 
   const viewFloor = floor => {
     
    // saveFile()
    saveFile(currentFloor).then(url => {
-     console.log("Saved file", url)
      currentFloor = floor;
      loadFile(urls[floor])
    });
@@ -70,23 +74,21 @@
       uploadBytes(storageRef, svgBlob).then((snapshot) => {
         getDownloadURL(storageRef).then(url => {
           urls[floor] = url;
-          console.log("Saved file: " + url)
           resolve(url)
         }).catch(error => reject(error))
       }).catch(error => reject(error))
     });
-  
   }
 
-  const loadFile = file => fetch(file)
-    .then(response => response.text())
+  const loadFile = file => {
+    return fetch(file)
+    .then(response => {return response.text()})
     .then(svg => {
-      console.log(file);
-      console.log("Loaded file")
       document.getElementById("container").innerHTML = svg;
       document.getElementById("container").firstChild.id = "svg";
       main();
     });
+  }
 
   const main = () => {
     let isDragging = false;
@@ -174,19 +176,8 @@
 
   }
 
-  loadFile('siwb3.svg')
+  loadFile(urls[currentFloor])
 
-  //loadFile('siwb4.svg')
-  document.addEventListener("keyup", function (event) {
-    if (event.key === "s") {
-      saveFile('siwb3.svg');
-    }
-  });
-  document.addEventListener("keyup", function (event) {
-    if (event.key === "a") {
-      viewFloor(3);
-    }
-  });
 </script>
 
 </html>
