@@ -26,13 +26,13 @@
   import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAt6xLMB2D-IhmjIyS_N4AshN0Ii__qNWM",
-    authDomain: "webtest-cffc9.firebaseapp.com",
-    databaseURL: "https://webtest-cffc9.firebaseio.com",
-    projectId: "webtest-cffc9",
-    storageBucket: "webtest-cffc9.appspot.com",
-    messagingSenderId: "563831032373",
-    appId: "1:563831032373:web:b0d36a5ed9a121d3b33f7c"
+    apiKey: "AIzaSyDgmtku-H1aCzdsy0ABTx_ce8LRDOb5uYA",
+    authDomain: "rgu-map.firebaseapp.com",
+    projectId: "rgu-map",
+    storageBucket: "rgu-map.appspot.com",
+    messagingSenderId: "689179910301",
+    appId: "1:689179910301:web:6a6c36f2edec7b75537474",
+    measurementId: "G-9ZLCF28J0Q"
   };
 
   // Initialize Firebase
@@ -45,22 +45,17 @@
   floors[4] = 'siwb4.svg'
 
   let urls = []
-  urls[3] = 'https://firebasestorage.googleapis.com/v0/b/webtest-cffc9.appspot.com/o/siwb3.svg?alt=media&token=27f5fe28-7934-441b-9463-4b2c498eaa93';
-  urls[4] = 'https://firebasestorage.googleapis.com/v0/b/webtest-cffc9.appspot.com/o/siwb4.svg?alt=media&token=b77c09e7-0187-41b7-b3bd-b81a1aed1653';
+  urls[3] = 'https://firebasestorage.googleapis.com/v0/b/rgu-map.appspot.com/o/siwb3.svg?alt=media&token=f3e349b1-5d03-4aa9-bf9f-f8781b9e9872';
+  urls[4] = 'https://firebasestorage.googleapis.com/v0/b/rgu-map.appspot.com/o/siwb4.svg?alt=media&token=55ea5d55-9be5-4fe3-88dd-b5388571ea20';
 
   document.getElementById("floor3").onclick = () => viewFloor(3);
   document.getElementById("floor4").onclick = () => viewFloor(4);
 
   const viewFloor = floor => {
-    
-   // saveFile()
    saveFile(currentFloor).then(url => {
      currentFloor = floor;
      loadFile(urls[floor])
    });
-   
-   
-  
   }
 
   const saveFile = async floor => {
@@ -156,15 +151,10 @@
       }
 
       const pt = svg.createSVGPoint();
-
-      // pass event coordinates
       pt.x = e.clientX;
       pt.y = e.clientY;
 
-      // transform to SVG coordinates
       const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
-
-      // add new SVG element
       const circle = document.createElementNS(NS, 'circle');
       circle.setAttribute('cx', svgP.x);
       circle.setAttribute('cy', svgP.y);
@@ -173,7 +163,6 @@
 
       svg.appendChild(circle);
     });
-
   }
 
   loadFile(urls[currentFloor])
